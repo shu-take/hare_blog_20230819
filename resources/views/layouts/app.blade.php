@@ -20,12 +20,6 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div max-w-7x1 mx-auto py-6 px-4 sm:px-6 1g:px-8">
-                    {{ $header }}
-                </div>
-            </header>
             
             <!-- Page Content -->
             <main>
