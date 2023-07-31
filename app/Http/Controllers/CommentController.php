@@ -107,11 +107,19 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Models\Post  $post
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
-        //
+        try {
+            $comment->delete();
+        } catch (\Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
+
+        return redirect()->route('posts.show', $post)
+            ->with('notice', 'コメントを削除しました');
     }
 }
