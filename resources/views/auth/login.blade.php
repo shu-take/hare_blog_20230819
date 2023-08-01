@@ -52,5 +52,16 @@
                 </x-button>
             </div>
         </form>
+        <div class="mt-5">
+            <div class="mb-2">SNSログイン</div>
+            <div class="flex justify-start">
+                <a href="{{ url('auth/github') }}" class="block mr-5 bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="{{ url('auth/google') }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                    <i class="fab fa-google"></i> Google
+                </a>
+            </div>
+        </div>
     </x-auth-card>
 </x-guest-layout>

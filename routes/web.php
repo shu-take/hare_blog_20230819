@@ -40,11 +40,11 @@ require __DIR__.'/auth.php';
 Route::prefix('auth')->middleware('guest')->group(function () {
     // auth/githubにアクセスがあった場合はOAuthControllerのredirectToProviderアクションへルーティング
     Route::get('/{provider}', [OAuthController::class, 'redirectToProvider'])
-        ->where('provider', 'github')
+        ->where('provider', 'github|google')
         ->name('redirectToProvider');
         
     // auth/github/callbackにアクセスがあった場合OAuthControllerのoauthCallbackアクションへルーティング
     Route::get('/{provider}/callback', [OAuthController::class, 'oauthCallback'])
-        ->where('provider', 'github')
+        ->where('provider', 'github|google')
         ->name('oauthCallback');
 });
