@@ -16,8 +16,7 @@ use App\Http\Controllers\Auth\OAuthController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])
-    ->name('root');
+Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
