@@ -16,7 +16,8 @@ use App\Http\Controllers\Auth\OAuthController;
 |
 */
 
-Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])
+    ->name('root');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,11 +40,10 @@ require __DIR__.'/auth.php';
 Route::prefix('auth')->middleware('guest')->group(function () {
     // auth/githubにアクセスがあった場合はOAuthControllerのredirectToProviderアクションへルーティング
     Route::get('/{provider}', [OAuthController::class, 'redirectToProvider'])
-        ->where('provider', 'github|google')
+        ->where('provider', 'github')
         ->name('redirectToProvider');
-        
-    // auth/github/callbackにアクセスがあった場合OAuthControllerのoauthCallbackアクションへルーティング
+    // auth/github/callbackにアクセスがあった場合はOAuthControllerのoauthCallbackアクションへルーティング
     Route::get('/{provider}/callback', [OAuthController::class, 'oauthCallback'])
-        ->where('provider', 'github|google')
+        ->where('provider', 'github')
         ->name('oauthCallback');
 });
